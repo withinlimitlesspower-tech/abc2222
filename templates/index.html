@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Project Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-1/4 bg-gray-800 p-4 overflow-y-auto">
+            <h2 class="text-xl font-bold mb-4">History</h2>
+            <div id="historyList" class="space-y-2"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col p-6">
+            <h1 class="text-3xl font-bold mb-4">AI Project Generator</h1>
+            
+            <div class="mb-4">
+                <button id="newProjectBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New Project</button>
+            </div>
+            
+            <div class="mb-4">
+                <textarea id="commandInput" rows="4" class="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white" placeholder="Describe the project you want to generate..."></textarea>
+            </div>
+            
+            <div class="mb-4 space-x-2">
+                <button id="generateBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Generate</button>
+                <button id="pushBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" disabled>Push to GitHub</button>
+            </div>
+            
+            <!-- Loading -->
+            <div id="loading" class="hidden mb-4">
+                <p class="text-yellow-400">Generating... This may take a moment.</p>
+            </div>
+            
+            <!-- Reasoning Display -->
+            <div id="reasoningSection" class="hidden mb-4">
+                <button id="toggleReasoning" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-1 px-3 rounded">Show Reasoning</button>
+                <div id="reasoningContent" class="hidden mt-2 p-3 bg-gray-800 rounded text-sm"></div>
+            </div>
+            
+            <!-- Output Area -->
+            <div id="output" class="flex-1 bg-gray-800 p-4 rounded overflow-y-auto">
+                <p class="text-gray-400">Generated project will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
